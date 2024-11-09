@@ -45,12 +45,13 @@ script.on_nth_tick(1, function(event)
 end)
 
 function init_hub_chest_with_filters(chest)
+    local quality = chest.quality
     local inventory = chest.get_inventory(defines.inventory.chest)
     local i = 1
     for _, item in pairs(prototypes.item) do
         if item_filter(item)
         then
-            inventory.set_filter(i, item.name)
+            inventory.set_filter(i, { name = item.name, quality = quality })
             i = i + 1
         end
     end
@@ -103,7 +104,7 @@ function teleport_items_to_hub_from_chest(chest, hub)
         for _, item in pairs(inventory.get_contents()) do
             if hub.can_insert(item) then
                 num_items = hub.insert(item)
-                inventory.remove({ name = item.name, count = num_items })
+                inventory.remove({ name = item.name, count = num_items, quality = item.quality })
             end
         end
     end
