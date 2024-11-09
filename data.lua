@@ -1,23 +1,11 @@
 local item_name = "hub-chest"
 local graphics = "__space-platform-chests__/graphics"
-
-local item_count = 0
-for _, item in pairs(data.raw.item) do -- all placeable items
-    if item.place_result ~= nil
-        or item.place_as_tile ~= nil
-    then
-        item_count = item_count + 1
-    end
-end
-
-for _, item in pairs(data.raw["repair-tool"]) do
-    item_count = item_count + 1
-end
+local global_inventory_size = 1000
 
 -- Entity
 local entity = table.deepcopy(data.raw["container"]["steel-chest"])
 entity.name = item_name
-entity.inventory_size = item_count + 1; -- +1 for counting itself aswell.
+entity.inventory_size = global_inventory_size
 entity.inventory_type = "with_filters_and_bar"
 entity.minable.result = "hub-chest"
 entity.icon = graphics .. "/icon/voidchest.png"

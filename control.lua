@@ -55,6 +55,7 @@ function init_hub_chest_with_filters(chest)
         end
     end
 
+    inventory.set_bar(i) -- block rest of  inventory slots
     chest.operable = false
 end
 
