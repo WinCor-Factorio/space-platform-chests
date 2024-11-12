@@ -28,13 +28,14 @@ script.on_nth_tick(1, function(event)
         local set = storage.hub_chests[chest_index]
 
         if not is_data_set_valid(set) then
-            global_index = 1 -- don't bother to handele it, just start over in next iteration
             return
         end
 
-        teleport_items_to_hub_from_chest(set.chest, set.hub)
+        if not set.chest.get_inventory(defines.inventory.chest).is_empty() then
+            teleport_items_to_hub_from_chest(set.chest, set.hub)
+        end
 
-        -- Move to the next chest
+        -- Move to next chest
         chest_index = chest_index + 1
         global_index = global_index + 1
         if chest_index > #storage.hub_chests then
@@ -82,10 +83,10 @@ end
 function is_data_set_valid(set)
     if not set.chest.valid then
         remove_set_from_storage(set)
+        global_index = 1 -- don't bother to handele it, just start over in next iteration
         return false
     end
-
-    return not set.chest.get_inventory(defines.inventory.chest).is_empty()
+    return true
 end
 
 function remove_set_from_storage(set_to_remove)
