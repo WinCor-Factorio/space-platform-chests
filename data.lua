@@ -1,6 +1,6 @@
 local item_name = "hub-chest"
 local graphics = "__space-platform-chests__/graphics"
-local global_inventory_size = 1000
+local global_inventory_size = 10000
 
 -- Entity
 local entity = table.deepcopy(data.raw["container"]["steel-chest"])
@@ -54,7 +54,7 @@ recipe.ingredients = {
 }
 recipe.allow_quality = false
 recipe.factoriopedia_description =
-"A limited chest linked to the space platform hub. Items inserted into this chest will be teleported to the hub instantly."
+"A limited chest linked to the space platform hub. Items inserted into this chest will be teleported to the hub instantly. It will only accept items that can used to build on the platform."
 
 -- Technology
 local technology = table.deepcopy(data.raw.technology["steel-processing"])
@@ -65,17 +65,18 @@ technology.effects = {
         recipe = item_name
     }
 }
-technology.prerequisites = nil;
+technology.prerequisites = { "steel-processing" };
 technology.icon = graphics .. "/hr-voidchest-technology.png"
 technology.icon_size = 256
 technology.unit =
 {
-    count_formula = "500",
+    count_formula = "100",
     ingredients =
     {
         { "automation-science-pack", 1 },
+        { "logistic-science-pack",   1 },
     },
-    time = 60
+    time = 30
 }
 
 
