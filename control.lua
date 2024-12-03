@@ -73,6 +73,7 @@ function item_filter(item)
         or item.subgroup.name == "terrain"
         or item.place_as_tile_result ~= nil
         or item.type == "repair-tool"
+        or item.type == "module"
     then
         return true
     end
