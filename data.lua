@@ -12,6 +12,7 @@ entity.icon = graphics .. "/icon/voidchest.png"
 entity.icon_size = 64
 entity.surface_conditions = { { min = 0, max = 0, property = "gravity" } }
 entity.open_sound = nil
+entity.fast_replaceable_group = "hub chest"
 entity.picture =
 {
     layers =
