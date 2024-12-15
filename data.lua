@@ -52,9 +52,7 @@ recipe.ingredients = {
     { type = "item", name = "steel-chest",        amount = 1 },
     { type = "item", name = "electronic-circuit", amount = 1 }
 }
-recipe.allow_quality = false
-recipe.factoriopedia_description =
-"A limited chest linked to the space platform hub. Items inserted into this chest will be teleported to the hub instantly. It will only accept items that can used to build on the platform."
+recipe.allow_quality = true
 
 -- Technology
 local technology = table.deepcopy(data.raw.technology["steel-processing"])
