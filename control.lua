@@ -1,7 +1,7 @@
-local global_index = 1
 
 script.on_init(function(e)
     storage.hub_chests = {}
+    storage.global_index = 1
 end)
 
 script.on_event(
@@ -22,7 +22,7 @@ script.on_nth_tick(1, function(event)
     end
 
     local max_per_tick = 3
-    local chest_index = global_index
+    local chest_index = storage.global_index
 
     for n = 1, max_per_tick do
         local set = storage.hub_chests[chest_index]
@@ -37,9 +37,9 @@ script.on_nth_tick(1, function(event)
 
         -- Move to next chest
         chest_index = chest_index + 1
-        global_index = global_index + 1
+        storage.global_index = storage.global_index + 1
         if chest_index > #storage.hub_chests then
-            global_index = 1
+            storage.global_index = 1
             return
         end
     end
@@ -84,7 +84,7 @@ end
 function is_data_set_valid(set)
     if not set.chest.valid then
         remove_set_from_storage(set)
-        global_index = 1 -- don't bother to handele it, just start over in next iteration
+        storage.global_index = 1 -- don't bother to handele it, just start over in next iteration
         return false
     end
     return true
