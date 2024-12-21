@@ -12,3 +12,4 @@
 *.vsix
 .vscode/settings.json
 /.vscode
+.vscode/settings.json

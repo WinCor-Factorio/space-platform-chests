@@ -22,6 +22,11 @@ script.on_nth_tick(1, function(event)
     end
 
     local max_per_tick = 3
+
+    if not storage.global_index then
+        storage.global_index = 1
+    end
+    
     local chest_index = storage.global_index
 
     for n = 1, max_per_tick do
