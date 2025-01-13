@@ -12,6 +12,7 @@ data:extend({
         order = "space-hub-chest-b",
         starting_status = "unlocked",
         tag = "[entity=hub-chest]",
+        is_title = true,
         trigger = {
           type = "research",
           technology = "hub-chest"
