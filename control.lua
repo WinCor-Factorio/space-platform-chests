@@ -6,7 +6,7 @@ end)
 
 script.on_event(
     { defines.events.on_built_entity, defines.events.on_robot_built_entity, defines.events
-        .on_space_platform_built_entity },
+        .on_space_platform_built_entity, defines.events.script_raised_built },
     function(e)
         local entity = e.entity
         if entity.name == "hub-chest" and entity.type == "container" then

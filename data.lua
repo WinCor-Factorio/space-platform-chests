@@ -1,3 +1,6 @@
+require("__space-platform-chests__/tips-and-tricks.lua")
+
+
 local item_name = "hub-chest"
 local graphics = "__space-platform-chests__/graphics"
 local global_inventory_size = 10000
